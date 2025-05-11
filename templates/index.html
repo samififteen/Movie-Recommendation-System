@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Movie Recommendation System</h1>
+    </header>
+    <main>
+        <form action="/recommend" method="post">
+            <label for="movie_title">Enter a Movie or Series Title:</label>
+            <input type="text" id="movie_title" name="movie_title" placeholder="Type a Movie or Series">
+            <button type="submit">Recommend</button>
+        </form>
+        <section class="recommendations">
+            <h2>Recommendations</h2>
+            {% if recommendations %}
+                <p>Recommendations for "{{ input_movie }}":</p>
+                <ul>
+                    {% for recommendation in recommendations %}
+                        <li>{{ recommendation }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No recommendations yet. Try entering a movie or series title!</p>
+            {% endif %}
+        </section>
+    </main>
+    <footer>
+        <p>Made by Mohammed Sami</p>
+    </footer>
+</body>
+</html>
